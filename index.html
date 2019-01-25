@@ -11,17 +11,29 @@
 	</head>
 	<body>
 		<div class="ball"></div>
+		<div class="ball2"></div>
 		<script>
 
 			var bouncingBall = anime({
-				targets: '.ball',
+				targets: ['.ball'], // can be an array of multiple targets
 				translateY: '50vh',
-				duration: 300,
-				loop: true,
+				duration: 1000, // how long the whole anime takes
+				delay: 500, // delays the nextround of the animation
+				loop: true, // default is false
 				direction: 'alternate',
 				easing: 'easeInCubic'
 			});
 
+var bouncingBall2 = anime({
+	targets: ['.ball2'], 
+	translateY: '50vh',
+	duration: 1000, 
+	loop: true,
+	direction: 'alternate', // there are two other directions - normal and reverse
+	easing: 'easeInQuad'
+});
+
+console.log('Show me all the possible easings: ', anime.easings)
 		</script>
 	</body>
 </html>
