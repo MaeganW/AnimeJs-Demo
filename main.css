@@ -25,7 +25,7 @@ body {
 	position: absolute;
 	top: 20px;
 	bottom: 0;
-	left: calc(50% - 100px);
+	left: calc(50% + 100px);
 	background-color: darkblue;
 	border-radius: 50%;
 }
@@ -36,7 +36,16 @@ body {
 	position: absolute;
 	top: 20px;
 	bottom: 0;
-	left: calc(50% - 300px);
+	left: calc(50% - 200px);
 	background-color: purple;
 	border-radius: 50%;
+}
+
+.kick {
+	position: absolute;
+	top: 20px;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color: yellow;
 }

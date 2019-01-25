@@ -12,21 +12,27 @@
 	<body>
 		<div class="ball"></div>
 		<div class="ball2"></div>
+		<div class="kick"></div>
 		<script>
 
 			var bouncingBall = anime({
 				targets: ['.ball'], // can be an array of multiple targets
-				translateY: '50vh',
-				duration: 1000, // how long the whole anime takes
-				delay: 500, // delays the nextround of the animation
+				translateY: '200vh', 
+				duration: 500, // how long the whole anime takes
+				// delay: 500, // delays the nextround of the animation
 				loop: true, // default is false
 				direction: 'alternate',
-				easing: 'easeInCubic'
+				easing: 'easeInCubic',
+				scaleX: {
+					value: 1.05, // control element's width as it scales horizontally on the x axis
+					duration: 150, // length of the scaling animation
+					delay: 268 // delay before it starts again with respect to the previous animation
+				}
 			});
 
 var bouncingBall2 = anime({
 	targets: ['.ball2'], 
-	translateY: '50vh',
+	translateY: '50vh', // in regards to the ball, this means, it dips below the screen until it appears to be a semi-circle before coming back up
 	duration: 1000, 
 	loop: true,
 	direction: 'alternate', // there are two other directions - normal and reverse
@@ -34,6 +40,23 @@ var bouncingBall2 = anime({
 });
 
 console.log('Show me all the possible easings: ', anime.easings)
+
+var kickBall = anime({
+	targets: ['.kick'],
+	scale: 1.2,
+	duration: 300,
+	easing: 'easeInCubic',
+	complete: function() {
+		anime({
+			targets: '.kick',
+			// translateX: '70vw',
+			translateX: '100vw',
+			scale: 1.5,
+			easing: 'easeOutBounce',
+			delay: 150
+		});
+	}
+});
 		</script>
 	</body>
 </html>
