@@ -1,0 +1,44 @@
+!<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Page Title</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/1.0.0/anime.min.js"></script>
+
+	</head>
+	<body>
+		<div class="container" style="display: flex; width: 100vw;">
+			<div class="round-log" style="color: pink; margin: 50px auto; font-family: 'arial';"></div>
+		</div>
+		<svg width="128" height="128" viewBox="0 0 128 128">
+			<filter id="displacementFilter">
+			<feTurbulence type="turbulence" baseFrequency=".05" numOctaves="2" result="turbulence"></feTurbulence>
+			<feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+			</filter>
+			<polygon points="64 68.64 8.574 100 63.446 67.68 64 4 64.554 67.68 119.426 100" style="filter: url(#displacementFilter)" fill="currentColor"></polygon>
+		</svg>
+		<script>
+			anime({
+				targets: ['.svg-attributes-demo polygon', 'feTurbulence', 'feDisplacementMap'],
+				points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
+				baseFrequency: 0,
+				scale: 1,
+				loop: true,
+				direction: 'alternate',
+				easing: 'easeInOutExpo'
+			});
+
+var roundLogEl = document.querySelector('.round-log');
+
+anime({
+	targets: roundLogEl,
+	innerHTML: [0, 10000],
+	easing: 'linear',
+	round: 10 // Will round the animated value to 1 decimal
+});
+		</script>
+	</body>
+</html>

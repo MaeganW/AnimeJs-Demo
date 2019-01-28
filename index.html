@@ -13,15 +13,24 @@
 		<div class="ball"></div>
 		<div class="ball2"></div>
 		<div class="kick"></div>
+
+		<svg width="128" height="128" viewBox="0 0 128 128">
+			<filter id="displacementFilter">
+			<feTurbulence type="turbulence" baseFrequency=".05" numOctaves="2" result="turbulence"></feTurbulence>
+			<feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+			</filter>
+			<polygon points="64 68.64 8.574 100 63.446 67.68 64 4 64.554 67.68 119.426 100" style="filter: url(#displacementFilter)" fill="currentColor"></polygon>
+		</svg>
 		<script>
 
 			var bouncingBall = anime({
 				targets: ['.ball'], // can be an array of multiple targets
-				translateY: '200vh', 
+				translateY: '50vh', 
 				duration: 500, // how long the whole anime takes
 				// delay: 500, // delays the nextround of the animation
 				loop: true, // default is false
 				direction: 'alternate',
+				borderRadius: ['0%', '50%'], //transforms shape from square to ball
 				easing: 'easeInCubic',
 				scaleX: {
 					value: 1.05, // control element's width as it scales horizontally on the x axis
@@ -56,6 +65,16 @@ var kickBall = anime({
 			delay: 150
 		});
 	}
+});
+
+anime({
+	targets: ['.svg-attributes-demo polygon', 'feTurbulence', 'feDisplacementMap'],
+	points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
+	baseFrequency: 0,
+	scale: 1,
+	loop: true,
+	direction: 'alternate',
+	easing: 'easeInOutExpo'
 });
 		</script>
 	</body>
