@@ -1,0 +1,13 @@
+body {
+  background: #26282B;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+}
+
+path {
+  stroke: #64D7E0;
+  fill: inherit;
+}
